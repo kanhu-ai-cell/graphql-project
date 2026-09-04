@@ -1,0 +1,111 @@
+type User {
+    id: ID!
+    username: String
+    email: String
+    mobile_no: String
+    alternate_no: String
+    whtsappMobNo: String
+
+    title: String
+    first_name: String
+    last_name: String
+
+    father_name: String
+    mother_name: String
+
+    presentAddress: String
+    permanentAddress: String
+
+    gender: String
+    dateOfBirth: String
+    age: Int
+
+    subRole: String
+    referralCode: String
+
+    description: String
+    experience: Int
+
+    designation: String
+    status: String
+    remarks: String
+
+    created_at: String
+    updated_at: String
+
+    deviceId: String
+
+    orders: [Order]
+}
+
+
+type Order {
+    id: ID!
+    orderNumber: String
+    customerMobile: String
+    productName: String
+
+    quantity: Int
+    price: Float
+    totalAmount: Float
+
+    paymentStatus: String
+    orderStatus: String
+    paymentMethod: String
+
+    shippingAddress: String
+    orderDate: String
+
+    user: User
+}
+input UserCO {
+    username: String
+    password: String
+    email: String
+    mobile_no: String
+    alternate_no: String
+    whtsappMobNo: String
+
+    title: String
+    first_name: String
+    last_name: String
+
+    father_name: String
+    mother_name: String
+
+    presentAddress: String
+    permanentAddress: String
+
+    gender: String
+    dateOfBirth: String
+    age: Int
+
+    subRole: String
+    referralCode: String
+
+    description: String
+    experience: Int
+
+    designation: String
+    status: String
+    remarks: String
+
+    deviceId: String
+}
+type Mutation {
+ createUser(user: UserCO!): User
+
+createOrder( orderNumber: String,productName: String, quantity: Int, price: Float, user: ID!
+  ): Order
+}
+
+type Query {
+
+    getAllUsers: [User]
+
+    getUser(userId: ID!): User
+
+    getAllOrders: [Order]
+
+    getOrder(orderId: ID!): Order
+}
